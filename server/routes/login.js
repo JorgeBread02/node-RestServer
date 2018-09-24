@@ -64,7 +64,9 @@ app.post('/login',(req,res)=>{
 async function verify(token) {
     const ticket = await client.verifyIdToken({
         idToken: token,
-        audience:process.env.CLIENT_ID ,  // Specify the CLIENT_ID of the app that accesses the backend
+        audience:process.env.CLIENT_ID ,  
+        
+        // Specify the CLIENT_ID of the app that accesses the backend
         // Or, if multiple clients access the backend:
         //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
     });
@@ -77,6 +79,8 @@ async function verify(token) {
      google:true
  }
   }
+
+
   verify().catch(console.error);
 
 
@@ -160,24 +164,5 @@ Usuario.findOne({email: googleUser.email},(err,usuarioDB)=>{
          })
      }
 })
-
-
-
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+})
 module.exports=app;

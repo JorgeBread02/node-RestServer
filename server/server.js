@@ -16,10 +16,21 @@ app.use (require('./routes/index'));
 // habilitar la carpeta public para que se acceda
 app.use (express.static(path.resolve(__dirname,'../public')))
 
-mongoose.connect(process.env.URLDB,(err,res)=>{
+
+mongoose.connect(process.env.urlDB, { useNewUrlParser: true }, (err, res) => {
+ 
+    if (err) throw err;
+ 
+    console.log('Base de Datos ONLINE');
+ 
+});
+
+
+
+/*mongoose.connect(process.env.URLDB,(err,res)=>{
 if(err)throw err;
 console.log('Base de datos ONLINE');
-});
+});*/
 
  
 app.listen(process.env.PORT ,()=>{
